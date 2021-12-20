@@ -1,18 +1,27 @@
+import { MDBBtn, MDBContainer, MDBIcon, MDBRow, MDBValidation, MDBInput } from "mdb-react-ui-kit";
 
 
-export default function RecipeForm({onSubmit}) {
+export default function RecipeForm({onSubmit, onCancel}) {
 
     return (
-        <form onSubmit={onSubmit}>
-            <label htmlFor="recipeName">Recipe Name</label>
-            <input type="text" id="recipeName" name="recipeName" placeholder="Give your recipe a name..."></input>
-            <br/>
-            <label htmlFor="directions">Directions</label>
-            <textarea id="directions" name="directions"></textarea>
-            <br></br>
-            <input type="button" id="cancel" name="cancel" value="Cancel"></input>
-            <input type="submit" id="submit" name="submit" value="Add"></input>
-        </form>
+        <MDBContainer>
+            <MDBRow md="6">
+                <MDBValidation onSubmit={onSubmit} novalidate>
+                    <p className="h4 text-center mb-4">Add New Recipe</p>
+                    <MDBInput label="Recipe Name" name="recipeName" id="recipeName" placeholder="Please give your recipe a name..." required></MDBInput>
+                    <br></br>
+                    <label htmlFor="directions" className="gray-text">Directions</label>
+                    <textarea className="form-control" id="directions" name="directions"></textarea>
+                    <br></br>
+                    <MDBBtn tag='a' outline rounded onClick={onCancel} color='none' style={{color: 'red', margin: "0 10vh"}}>
+                        <MDBIcon fas icon='times' size='lg'></MDBIcon>
+                    </MDBBtn>
+                    <MDBBtn tag='button' outline rounded type="submit" color='none' style={{color: 'green', margin: "0 10vh"}}>
+                        <MDBIcon fas icon='check' size='lg'></MDBIcon>
+                    </MDBBtn>
+                </MDBValidation>
+            </MDBRow>
+        </MDBContainer>
     )
 
 }

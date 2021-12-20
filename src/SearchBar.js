@@ -1,15 +1,12 @@
-
+import { MDBRadio, MDBValidation } from "mdb-react-ui-kit";
 
 export default function SearchBar({onSubmit}) {
     return (
-        <form onSubmit={onSubmit}>
-            <input type="text" name="searchTerm" id="searchTerm"></input>
-            <input type="submit" name="submit"></input>
-            <br></br>
-            <label htmlFor="searchTypeName">Name</label>
-            <input type="radio" id="searchTypeName" name="searchType" value="name" defaultChecked={true}></input>
-            <label htmlFor="searchTypeIngredient">Ingredient</label>
-            <input style={{paddingLeft: "20vh"}} type="radio" id="searchTypeIngredient" name="searchType" value="ingredient"></input>
+        <form className="d-flex input-group w-auto" onSubmit={onSubmit} novalidate>
+            <input type="search" name="searchTerm" id="searchTerm" aria-label="Search" required></input>
+            <input type="submit" name="submit" value="Search"></input>
+            <MDBRadio style={{marginLeft: "5vh"}} label="Name" name="searchType" value="name" inline defaultChecked></MDBRadio>
+            <MDBRadio label="Ingredient" name="searchType" value="ingredient" inline></MDBRadio>
         </form>
     )
 }
